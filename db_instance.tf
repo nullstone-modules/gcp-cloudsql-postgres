@@ -1,0 +1,43 @@
+resource "google_sql_database_instance" "this" {
+  name                = local.resource_name
+  database_version    = "POSTGRES_${replace(var.postgres_version, ".", "_")}"
+  deletion_protection = false
+
+  settings {
+    tier              = var.tier
+    activation_policy = "ALWAYS"
+    availability_type = var.high_availability ? "REGIONAL" : "ZONAL"
+    disk_autoresize   = "true"
+    disk_type         = "PD_SSD"
+    pricing_plan      = "PER_USE"
+    user_labels       = local.tags
+
+    backup_configuration {
+      enabled                        = true
+      start_time                     = "02:00"
+      transaction_log_retention_days = 7
+
+      backup_retention_settings {
+        retained_backups = var.backup_retention_count
+      }
+    }
+
+    maintenance_window {
+      day          = var.maintenance_window.day
+      hour         = var.maintenance_window.hour
+      update_track = "stable"
+    }
+
+    ip_configuration {
+      ipv4_enabled    = true
+      require_ssl     = true
+      private_network = local.vpc_name
+    }
+
+    insights_config {
+      query_insights_enabled  = true
+      record_application_tags = true
+      record_client_address   = true
+    }
+  }
+}
