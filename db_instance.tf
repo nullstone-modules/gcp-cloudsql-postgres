@@ -5,6 +5,8 @@ resource "google_project_service" "service_networking" {
 }
 
 resource "google_sql_database_instance" "this" {
+  depends_on = [google_project_service.service_networking]
+
   name                = local.resource_name
   database_version    = "POSTGRES_${replace(var.postgres_version, ".", "_")}"
   deletion_protection = false
