@@ -31,7 +31,7 @@ resource "google_sql_database_instance" "this" {
     ip_configuration {
       ipv4_enabled    = true
       require_ssl     = true
-      private_network = local.vpc_name
+      private_network = local.vpc_id
     }
 
     insights_config {
