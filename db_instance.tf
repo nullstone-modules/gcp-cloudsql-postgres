@@ -1,15 +1,10 @@
-resource "google_project_service" "service_networking" {
-  project            = data.google_compute_zones.available.project
-  service            = "servicenetworking.googleapis.com"
-  disable_on_destroy = false
-}
-
 resource "google_sql_database_instance" "this" {
-  depends_on = [google_project_service.service_networking]
+  depends_on = [google_service_networking_connection.private_vpc_connection]
 
   name                = local.resource_name
   database_version    = "POSTGRES_${replace(var.postgres_version, ".", "_")}"
   deletion_protection = false
+  region              = data.google_compute_subnetwork.private0.region
 
   settings {
     tier              = var.tier
