@@ -10,7 +10,7 @@ resource "google_sql_database_instance" "this" {
     disk_autoresize   = "true"
     disk_type         = "PD_SSD"
     pricing_plan      = "PER_USE"
-    user_labels       = local.tags
+    user_labels       = {for key, value in local.tags : lower(key) => value}
 
     backup_configuration {
       enabled                        = true
