@@ -24,5 +24,6 @@ data "ns_connection" "network" {
 locals {
   resource_name = "${data.ns_workspace.this.block_ref}-${random_string.resource_suffix.result}"
   tags          = data.ns_workspace.this.tags
+  labels        = { for key, value in local.tags : lower(key) => value }
   vpc_id        = data.ns_connection.network.outputs.vpc_id
 }

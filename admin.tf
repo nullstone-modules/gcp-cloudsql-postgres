@@ -9,7 +9,7 @@ resource "random_password" "this" {
 
 resource "google_secret_manager_secret" "admin" {
   secret_id = "${local.resource_name}-admin"
-  labels    = local.tags
+  labels    = local.labels
 
   replication {
     automatic = true

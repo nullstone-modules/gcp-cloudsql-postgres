@@ -1,3 +1,9 @@
+resource "google_project_service" "service_networking" {
+  project            = data.google_compute_zones.available.project
+  service            = "servicenetworking.googleapis.com"
+  disable_on_destroy = false
+}
+
 resource "google_sql_database_instance" "this" {
   name                = local.resource_name
   database_version    = "POSTGRES_${replace(var.postgres_version, ".", "_")}"
@@ -10,7 +16,7 @@ resource "google_sql_database_instance" "this" {
     disk_autoresize   = "true"
     disk_type         = "PD_SSD"
     pricing_plan      = "PER_USE"
-    user_labels       = {for key, value in local.tags : lower(key) => value}
+    user_labels       = local.labels
 
     backup_configuration {
       enabled                        = true
