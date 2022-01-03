@@ -32,7 +32,7 @@ resource "google_sql_database_instance" "this" {
     }
 
     ip_configuration {
-      ipv4_enabled    = true
+      ipv4_enabled    = false # Disable public access
       require_ssl     = true
       private_network = local.vpc_id
     }
