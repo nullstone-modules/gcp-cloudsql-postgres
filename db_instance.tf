@@ -47,3 +47,7 @@ resource "google_sql_database_instance" "this" {
     }
   }
 }
+
+locals {
+  db_port = 5432
+}

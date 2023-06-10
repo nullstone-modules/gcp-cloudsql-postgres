@@ -1,9 +1,3 @@
-resource "google_project_service" "service_networking" {
-  project            = local.project_id
-  service            = "servicenetworking.googleapis.com"
-  disable_on_destroy = false
-}
-
 resource "google_project_iam_member" "service_agent" {
   depends_on = [google_project_service.service_networking]
 
