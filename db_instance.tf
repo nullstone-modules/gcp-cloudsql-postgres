@@ -3,13 +3,14 @@ resource "google_sql_database_instance" "this" {
 
   name                = local.resource_name
   database_version    = "POSTGRES_${replace(var.postgres_version, ".", "_")}"
-  deletion_protection = false
   region              = data.google_compute_subnetwork.private0.region
+  deletion_protection = false
 
   settings {
     tier              = var.tier
     activation_policy = "ALWAYS"
     availability_type = var.high_availability ? "REGIONAL" : "ZONAL"
+    disk_size         = var.allocated_storage
     disk_autoresize   = "true"
     disk_type         = "PD_SSD"
     pricing_plan      = "PER_USE"
@@ -18,9 +19,11 @@ resource "google_sql_database_instance" "this" {
     backup_configuration {
       enabled                        = true
       start_time                     = "02:00"
-      transaction_log_retention_days = 7
+      transaction_log_retention_days = var.backup_retention_count
+      binary_log_enabled             = true
 
       backup_retention_settings {
+        retention_unit   = "COUNT"
         retained_backups = var.backup_retention_count
       }
     }
@@ -32,9 +35,9 @@ resource "google_sql_database_instance" "this" {
     }
 
     ip_configuration {
-      ipv4_enabled    = false # Disable public access
-      require_ssl     = true
+      require_ssl     = var.enforce_ssl
       private_network = local.vpc_id
+      ipv4_enabled    = var.enable_public_access
     }
 
     insights_config {
