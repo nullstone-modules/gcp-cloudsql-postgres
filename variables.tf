@@ -8,7 +8,7 @@ By default, configured with 13.
 EOF
 }
 
-variable "tier" {
+variable "instance_class" {
   type        = string
   default     = "db-f1-micro"
   description = <<EOF

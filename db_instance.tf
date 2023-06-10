@@ -7,7 +7,7 @@ resource "google_sql_database_instance" "this" {
   deletion_protection = false
 
   settings {
-    tier              = var.tier
+    tier              = var.instance_class
     activation_policy = "ALWAYS"
     availability_type = var.high_availability ? "REGIONAL" : "ZONAL"
     disk_size         = var.allocated_storage
