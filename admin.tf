@@ -36,7 +36,7 @@ locals {
 resource "google_secret_manager_secret" "admin_creds" {
   // Valid secret_id: [[a-zA-Z_0-9]+]
   secret_id = "${local.resource_name}_admin"
-  labels    = local.tags
+  labels    = local.labels
 
   replication {
     automatic = true
