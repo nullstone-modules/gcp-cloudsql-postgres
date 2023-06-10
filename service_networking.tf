@@ -1,17 +1,17 @@
+resource "google_compute_global_address" "db_private" {
+  name          = "${local.resource_name}-private-ip"
+  purpose       = "VPC_PEERING"
+  address_type  = "INTERNAL"
+  prefix_length = 16
+  network       = local.vpc_id
+}
+
 resource "google_project_iam_member" "service_agent" {
   depends_on = [google_project_service.service_networking]
 
   project = local.project_id
   member  = "serviceAccount:service-${local.project_number}@service-networking.iam.gserviceaccount.com"
   role    = "roles/servicenetworking.serviceAgent"
-}
-
-resource "google_compute_global_address" "db_private" {
-  name          = local.resource_name
-  purpose       = "VPC_PEERING"
-  address_type  = "INTERNAL"
-  prefix_length = 16
-  network       = local.vpc_name
 }
 
 resource "google_service_networking_connection" "private_vpc_connection" {
