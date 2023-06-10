@@ -20,7 +20,6 @@ resource "google_sql_database_instance" "this" {
       enabled                        = true
       start_time                     = "02:00"
       transaction_log_retention_days = var.backup_retention_count
-      binary_log_enabled             = true
 
       backup_retention_settings {
         retention_unit   = "COUNT"
