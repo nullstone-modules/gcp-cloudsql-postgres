@@ -1,13 +1,13 @@
 org_name: nullstone
-name: gcp-postgres-cloudql
-friendly_name: Cloud SQL Postgres Cluster
+name: gcp-cloudsql-postgres
+friendly_name: CloudSQL PostgresQL Cluster
 description: Creates a standard, best-practice postgres cluster in GCP using Cloud SQL
 category: datastore
 subcategory: ""
 provider_types:
     - gcp
 platform: postgres
-subplatform: cloud-sql
+subplatform: cloudsql
 type: ""
 appCategories: []
 is_public: true
