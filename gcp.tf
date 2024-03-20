@@ -35,6 +35,11 @@ resource "google_project_service" "run" {
   disable_dependent_services = false
   disable_on_destroy         = false
 }
+resource "google_project_service" "function" {
+  service                    = "cloudfunctions.googleapis.com"
+  disable_dependent_services = false
+  disable_on_destroy         = false
+}
 // Artifact Registry is needed to create a Cloud Function (db-admin) even though we're not using it
 resource "google_project_service" "artifact_registry" {
   service                    = "artifactregistry.googleapis.com"

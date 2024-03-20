@@ -12,5 +12,9 @@ module "db_admin" {
   password                  = local.admin_password
   vpc_access_connector_name = local.vpc_access_connector
 
-  depends_on = [google_project_service.run, google_project_service.artifact_registry]
+  depends_on = [
+    google_project_service.function,
+    google_project_service.run,
+    google_project_service.artifact_registry,
+  ]
 }
