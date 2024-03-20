@@ -1,6 +1,6 @@
 module "db_admin" {
   source  = "api.nullstone.io/nullstone/gcp-pg-db-admin/gcp"
-  version = "~> 0.6.0"
+  version = "~> 0.7.0"
 
   name   = local.resource_name
   labels = local.labels
@@ -11,10 +11,4 @@ module "db_admin" {
   username                  = local.admin_username
   password                  = local.admin_password
   vpc_access_connector_name = local.vpc_access_connector
-
-  depends_on = [
-    google_project_service.function,
-    google_project_service.run,
-    google_project_service.artifact_registry,
-  ]
 }
