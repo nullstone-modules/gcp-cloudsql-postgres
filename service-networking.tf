@@ -6,14 +6,6 @@ resource "google_compute_global_address" "db_private" {
   network       = local.vpc_id
 }
 
-resource "google_project_iam_member" "service_agent" {
-  depends_on = [google_project_service.service_networking]
-
-  project = local.project_id
-  member  = "serviceAccount:service-${local.project_number}@service-networking.iam.gserviceaccount.com"
-  role    = "roles/servicenetworking.serviceAgent"
-}
-
 resource "google_service_networking_connection" "private_vpc_connection" {
   depends_on = [google_project_iam_member.service_agent]
 
@@ -21,3 +13,11 @@ resource "google_service_networking_connection" "private_vpc_connection" {
   service                 = "servicenetworking.googleapis.com"
   reserved_peering_ranges = [google_compute_global_address.db_private.name]
 }
+
+#resource "google_project_iam_member" "service_agent" {
+#  depends_on = [google_project_service.service_networking]
+#
+#  project = local.project_id
+#  member  = "serviceAccount:service-${local.project_number}@service-networking.iam.gserviceaccount.com"
+#  role    = "roles/servicenetworking.serviceAgent"
+#}
