@@ -1,6 +1,4 @@
 resource "google_sql_database_instance" "this" {
-  depends_on = [google_service_networking_connection.private_vpc_connection]
-
   name                = local.resource_name
   database_version    = "POSTGRES_${replace(var.postgres_version, ".", "_")}"
   region              = data.google_compute_subnetwork.private0.region
