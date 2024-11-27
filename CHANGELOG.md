@@ -1,3 +1,6 @@
+# 0.1.4 (Nov 27, 2024)
+* Upgrade google provider.
+
 # 0.1.3 (Mar 21, 2024)
 * Moved single private service access to nullstone-modules/gcp-network module.
 

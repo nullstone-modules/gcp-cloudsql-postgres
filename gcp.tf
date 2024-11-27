@@ -1,14 +1,11 @@
 data "google_client_config" "this" {}
 data "google_compute_zones" "available" {}
-data "google_project" "this" {
-  project_id = data.google_client_config.this.project
-}
+data "google_project" "this" {}
 
 locals {
-  project_id      = data.google_client_config.this.project
-  project_number  = data.google_project.this.number
-  region          = data.google_client_config.this.region
-  available_zones = data.google_compute_zones.available.names
+  project_id     = data.google_project.this.project_id
+  project_number = data.google_project.this.number
+  region         = data.google_client_config.this.region
 }
 
 resource "google_project_service" "secret_manager" {

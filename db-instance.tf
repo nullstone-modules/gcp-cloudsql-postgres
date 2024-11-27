@@ -32,7 +32,7 @@ resource "google_sql_database_instance" "this" {
     }
 
     ip_configuration {
-      require_ssl     = var.enforce_ssl
+      ssl_mode        = var.enforce_ssl ? "ENCRYPTED_ONLY" : "ALLOW_UNENCRYPTED_AND_ENCRYPTED"
       private_network = local.vpc_id
       ipv4_enabled    = var.enable_public_access
     }
