@@ -11,4 +11,6 @@ module "db_admin" {
   username                  = local.admin_username
   password                  = local.admin_password
   vpc_access_connector_name = local.vpc_access_connector
+
+  depends_on = [google_project_service.secret_manager]]
 }
