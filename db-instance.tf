@@ -43,6 +43,8 @@ resource "google_sql_database_instance" "this" {
       record_client_address   = true
     }
   }
+
+  depends_on = [google_project_service.sqladmin]
 }
 
 locals {
