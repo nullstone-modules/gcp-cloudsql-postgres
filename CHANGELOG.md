@@ -1,3 +1,6 @@
+# 0.1.5 (Jan 31, 2025)
+* Added `var.db_flags` to configure postgres.
+
 # 0.1.4 (Nov 27, 2024)
 * Upgrade google provider.
 

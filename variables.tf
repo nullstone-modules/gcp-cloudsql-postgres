@@ -93,3 +93,12 @@ By default, the postgres cluster is not accessible to the public.
 If you want to access your database, we recommend using a bastion instead.
 EOF
 }
+
+variable "db_flags" {
+  type        = map(string)
+  default     = {}
+  description = <<EOF
+This is a dictionary of database flags to configure the postgres instance.
+For a list of flags, see https://cloud.google.com/sql/docs/postgres/flags#list-flags-postgres
+EOF
+}
