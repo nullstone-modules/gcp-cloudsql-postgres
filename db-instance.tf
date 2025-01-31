@@ -25,6 +25,15 @@ resource "google_sql_database_instance" "this" {
       }
     }
 
+    dynamic "database_flags" {
+      for_each = var.db_flags
+
+      content {
+        name  = database_flags.key
+        value = database_flags.value
+      }
+    }
+
     maintenance_window {
       day          = var.maintenance_window.day
       hour         = var.maintenance_window.hour
