@@ -1,3 +1,15 @@
+# 0.1.9 (Dec 04, 2025)
+* Changed the default postgres version to 17.
+
+# 0.1.8 (Jan 31, 2025)
+* Added support for database flags configuration through vars.
+
+# 0.1.7 (Dec 05, 2024)
+* Fixed Terraform syntax.
+
+# 0.1.6 (Dec 05, 2024)
+* Enable secrets manager first.
+
 # 0.1.5 (Jan 31, 2025)
 * Added `var.db_flags` to configure postgres.
 

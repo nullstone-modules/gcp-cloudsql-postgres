@@ -1,10 +1,10 @@
 variable "postgres_version" {
   type        = string
-  default     = "15"
+  default     = "17"
   description = <<EOF
 Specify the postgres engine to utilize.
-Supported versions are 12, 13, 14, and 15.
-By default, configured with 15.
+Supported versions are 13, 14, 15, 16, 17, and 18.
+By default, configured with 17.
 EOF
 }
 
