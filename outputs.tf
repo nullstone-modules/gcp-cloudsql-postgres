@@ -25,6 +25,6 @@ output "db_admin_function_url" {
 
 output "db_admin_invoker" {
   value       = module.db_admin.invoker
-  description = "object({ email: string, private_key: string }) ||| A GCP service account with explicit privilege invoke db admin cloud function."
+  description = "object({ email: string, impersonate: true }) ||| A GCP service account with explicit privilege invoke db admin cloud function."
   sensitive   = true
 }

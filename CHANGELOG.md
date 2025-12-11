@@ -1,3 +1,7 @@
+# 0.2.0 (Dec 11, 2025)
+* Migrated from `terraform` to `tofu`.
+* Using service account impersonation instead of service account keys for db admin invoker.
+
 # 0.1.9 (Dec 04, 2025)
 * Changed the default postgres version to 17.
 
