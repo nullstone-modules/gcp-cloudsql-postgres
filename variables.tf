@@ -8,6 +8,20 @@ By default, configured with 17.
 EOF
 }
 
+variable "edition" {
+  type        = string
+  default     = "ENTERPRISE"
+  description = <<EOF
+By default, this is set to 'ENTERPRISE' which suits non-production environments.
+For production environments, it is recommended to set this to 'ENTERPRISE_PLUS'.
+EOF
+
+  validation {
+    condition     = contains(["ENTERPRISE", "ENTERPRISE_PLUS"], var.edition)
+    error_message = "edition must be either 'ENTERPRISE' or 'ENTERPRISE_PLUS'"
+  }
+}
+
 variable "instance_class" {
   type        = string
   default     = "db-f1-micro"

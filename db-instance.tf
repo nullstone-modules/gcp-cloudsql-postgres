@@ -5,6 +5,7 @@ resource "google_sql_database_instance" "this" {
   deletion_protection = false
 
   settings {
+    edition           = var.edition
     tier              = var.instance_class
     activation_policy = "ALWAYS"
     availability_type = var.high_availability ? "REGIONAL" : "ZONAL"

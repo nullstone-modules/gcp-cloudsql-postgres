@@ -1,3 +1,6 @@
+# 0.2.1 (Dec 11, 2025)
+* Added `var.edition` with a default to non-production, cheaper instances.
+
 # 0.2.0 (Dec 11, 2025)
 * Migrated from `terraform` to `tofu`.
 * Using service account impersonation instead of service account keys for db admin invoker.
