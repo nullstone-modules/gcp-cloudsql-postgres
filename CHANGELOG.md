@@ -1,3 +1,6 @@
+# 0.2.4 (Dec 17, 2025)
+* Fixed invoker impersonators var.
+
 # 0.2.3 (Dec 17, 2025)
 * Fixed executing service account reference.
 

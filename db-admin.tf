@@ -12,10 +12,10 @@ module "db_admin" {
   password                  = local.admin_password
   vpc_access_connector_name = local.vpc_access_connector
 
-  invoker_impersonators = [
+  invoker_impersonators = toset(compact([
     local.ns_agent_service_account_email,
     local.executing_sa_email,
-  ]
+  ]))
 
   depends_on = [google_project_service.secret_manager]
 }
