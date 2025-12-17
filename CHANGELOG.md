@@ -1,3 +1,6 @@
+# 0.2.3 (Dec 17, 2025)
+* Fixed executing service account reference.
+
 # 0.2.2 (Dec 17, 2025)
 * Allow ns service account to execute db-admin function.
 
