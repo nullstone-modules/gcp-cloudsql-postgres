@@ -11,7 +11,11 @@ module "db_admin" {
   username                  = local.admin_username
   password                  = local.admin_password
   vpc_access_connector_name = local.vpc_access_connector
-  invoker_impersonators     = [local.ns_agent_service_account_email]
+
+  invoker_impersonators = [
+    local.ns_agent_service_account_email,
+    local.executing_sa_email,
+  ]
 
   depends_on = [google_project_service.secret_manager]
 }

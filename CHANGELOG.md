@@ -1,3 +1,6 @@
+# 0.2.2 (Dec 17, 2025)
+* Allow ns service account to execute db-admin function.
+
 # 0.2.1 (Dec 11, 2025)
 * Added `var.edition` with a default to non-production, cheaper instances.
 
