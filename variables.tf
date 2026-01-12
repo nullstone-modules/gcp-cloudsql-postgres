@@ -99,6 +99,16 @@ This is highly recommended if you have public access enabled.
 EOF
 }
 
+variable "enforce_secure_passwords" {
+  type        = bool
+  default     = false
+  description = <<EOF
+This enables a secure password policy on the database instance.
+Specifically, this requires a minimum password length of 8 characters, a complexity of DEFAULT, a reuse interval of 5 days, disallowing the username in the password, and a password change interval of 0 seconds.
+By default, this is disabled.
+EOF
+}
+
 variable "enable_public_access" {
   type        = bool
   default     = false

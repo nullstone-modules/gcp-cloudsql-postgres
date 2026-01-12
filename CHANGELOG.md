@@ -1,3 +1,6 @@
+# 0.2.5 (Jan 12, 2026)
+* Added `var.enforce_secure_passwords` to enforce secure password policies on the database instance.
+
 # 0.2.4 (Dec 17, 2025)
 * Fixed invoker impersonators var.
 
