@@ -1,3 +1,6 @@
+# 0.2.7 (Jan 12, 2026)
+* Upgraded module to support a disabled password policy gracefully.
+
 # 0.2.6 (Jan 12, 2026)
 * Fixed password policy configuration.
 

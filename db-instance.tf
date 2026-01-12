@@ -53,14 +53,17 @@ resource "google_sql_database_instance" "this" {
       record_client_address   = true
     }
 
-    password_validation_policy {
-      enable_password_policy = var.enforce_secure_passwords
+    dynamic "password_validation_policy" {
+      for_each = var.enforce_secure_passwords ? [true] : []
 
-      min_length                  = 8
-      complexity                  = "COMPLEXITY_DEFAULT"
-      reuse_interval              = 5
-      disallow_username_substring = true
-      password_change_interval    = "0s"
+      content {
+        enable_password_policy      = true
+        min_length                  = 8
+        complexity                  = "COMPLEXITY_DEFAULT"
+        reuse_interval              = 5
+        disallow_username_substring = true
+        password_change_interval    = "0s"
+      }
     }
   }
 
