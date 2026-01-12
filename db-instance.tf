@@ -56,11 +56,11 @@ resource "google_sql_database_instance" "this" {
     password_validation_policy {
       enable_password_policy = var.enforce_secure_passwords
 
-      min_length                    = 8
-      complexity                    = "COMPLEXITY_DEFAULT"
-      reuse_interval                = 5
-      disallow_username_in_password = true
-      password_change_interval      = "0s"
+      min_length                  = 8
+      complexity                  = "COMPLEXITY_DEFAULT"
+      reuse_interval              = 5
+      disallow_username_substring = true
+      password_change_interval    = "0s"
     }
   }
 

@@ -1,3 +1,6 @@
+# 0.2.6 (Jan 12, 2026)
+* Fixed password policy configuration.
+
 # 0.2.5 (Jan 12, 2026)
 * Added `var.enforce_secure_passwords` to enforce secure password policies on the database instance.
 
