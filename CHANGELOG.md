@@ -1,3 +1,6 @@
+# 0.2.8 (Jan 16, 2026)
+* Added `postgres_ssl_mode` to indicate encryption requirements for connections.
+
 # 0.2.7 (Jan 12, 2026)
 * Upgraded module to support a disabled password policy gracefully.
 

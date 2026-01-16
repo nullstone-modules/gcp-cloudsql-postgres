@@ -71,5 +71,6 @@ resource "google_sql_database_instance" "this" {
 }
 
 locals {
-  db_port = 5432
+  db_port           = 5432
+  postgres_ssl_mode = var.enforce_ssl ? "require" : "prefer"
 }

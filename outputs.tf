@@ -28,3 +28,8 @@ output "db_admin_invoker" {
   description = "object({ email: string, impersonate: true }) ||| A GCP service account with explicit privilege invoke db admin cloud function."
   sensitive   = true
 }
+
+output "postgres_ssl_mode" {
+  value       = local.postgres_ssl_mode
+  description = "string ||| The ssl mode configured on the database instance. (`require` if var.enforce_ssl, otherwise `prefer`)"
+}
