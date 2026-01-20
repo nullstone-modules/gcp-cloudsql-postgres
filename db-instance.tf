@@ -45,6 +45,14 @@ resource "google_sql_database_instance" "this" {
       ssl_mode        = var.enforce_ssl ? "ENCRYPTED_ONLY" : "ALLOW_UNENCRYPTED_AND_ENCRYPTED"
       private_network = local.vpc_id
       ipv4_enabled    = var.enable_public_access
+
+      dynamic "authorized_networks" {
+        for_each = var.ip_whitelist
+
+        content {
+          value = authorized_networks.value
+        }
+      }
     }
 
     insights_config {

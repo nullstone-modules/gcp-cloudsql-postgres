@@ -1,3 +1,6 @@
+# 0.2.9 (Jan 20, 2026)
+* Added `var.ip_whitelist` to allow explicit external access without making public.
+
 # 0.2.8 (Jan 16, 2026)
 * Added `postgres_ssl_mode` to indicate encryption requirements for connections.
 

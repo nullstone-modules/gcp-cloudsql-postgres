@@ -78,7 +78,6 @@ By default, configured for Sunday at 11:00 PM.
 EOF
 }
 
-
 variable "high_availability" {
   type        = bool
   default     = false
@@ -124,5 +123,13 @@ variable "db_flags" {
   description = <<EOF
 This is a dictionary of database flags to configure the postgres instance.
 For a list of flags, see https://cloud.google.com/sql/docs/postgres/flags#list-flags-postgres
+EOF
+}
+
+variable "ip_whitelist" {
+  type        = set(string)
+  default     = []
+  description = <<EOF
+Specify a set of IP addresses that allowed to access this postgres instance without exposing public access.
 EOF
 }
