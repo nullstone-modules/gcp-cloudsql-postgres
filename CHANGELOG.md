@@ -1,3 +1,6 @@
+# 0.2.10 (Feb 19, 2026)
+* Added `var.resource_alerts` to monitor resource usage and notify via email if resource usage exceeds thresholds.
+
 # 0.2.9 (Jan 20, 2026)
 * Added `var.ip_whitelist` to allow explicit external access without making public.
 

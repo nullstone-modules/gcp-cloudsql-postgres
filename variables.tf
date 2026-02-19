@@ -133,3 +133,39 @@ variable "ip_whitelist" {
 Specify a set of IP addresses that allowed to access this postgres instance without exposing public access.
 EOF
 }
+
+variable "resource_alerts" {
+  type = object({
+    enabled       = bool
+    email         = string
+    cpu           = number
+    memory        = number
+    io_read       = number
+    io_write      = number
+    disk_low      = number
+    disk_critical = number
+  })
+  default = {
+    enabled       = false
+    email         = ""
+    cpu           = 80
+    memory        = 85
+    io_read       = 1000
+    io_write      = 1000
+    disk_low      = 85
+    disk_critical = 95
+  }
+
+  description = <<EOF
+Enables alerts on resource usage for the postgres instance.
+
+Each alert is configured to trigger when the resource usage exceeds the specified threshold.
+The thresholds are specified as percentages. (i.e. 80 => 80%)
+However, io_read and io_write are specified in ops per second.
+EOF
+
+  validation {
+    condition     = var.resource_alerts.enabled && var.resource_alerts.email != ""
+    error_message = "email must be specified if alerts are enabled"
+  }
+}
