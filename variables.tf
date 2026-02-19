@@ -165,7 +165,7 @@ However, io_read and io_write are specified in ops per second.
 EOF
 
   validation {
-    condition     = var.resource_alerts.enabled && var.resource_alerts.email != ""
+    condition     = !var.resource_alerts.enabled || var.resource_alerts.email != ""
     error_message = "email must be specified if alerts are enabled"
   }
 }

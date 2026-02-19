@@ -1,3 +1,6 @@
+# 0.2.11 (Feb 19, 2026)
+* Fixed validation for `var.resource_alerts`.
+
 # 0.2.10 (Feb 19, 2026)
 * Added `var.resource_alerts` to monitor resource usage and notify via email if resource usage exceeds thresholds.
 
