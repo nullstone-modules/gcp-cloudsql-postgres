@@ -1,3 +1,7 @@
+# 0.2.12 (Feb 20, 2026)
+* Configure resource alerts through external `notification` connection.
+* Renamed `var.resource_alerts` to `var.resource_thresholds` and removed notification info.
+
 # 0.2.11 (Feb 19, 2026)
 * Fixed validation for `var.resource_alerts`.
 

@@ -134,10 +134,8 @@ Specify a set of IP addresses that allowed to access this postgres instance with
 EOF
 }
 
-variable "resource_alerts" {
+variable "resource_thresholds" {
   type = object({
-    enabled       = bool
-    email         = string
     cpu           = number
     memory        = number
     io_read       = number
@@ -146,8 +144,6 @@ variable "resource_alerts" {
     disk_critical = number
   })
   default = {
-    enabled       = false
-    email         = ""
     cpu           = 80
     memory        = 85
     io_read       = 1000
@@ -163,9 +159,4 @@ Each alert is configured to trigger when the resource usage exceeds the specifie
 The thresholds are specified as percentages. (i.e. 80 => 80%)
 However, io_read and io_write are specified in ops per second.
 EOF
-
-  validation {
-    condition     = !var.resource_alerts.enabled || var.resource_alerts.email != ""
-    error_message = "email must be specified if alerts are enabled"
-  }
 }
