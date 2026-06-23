@@ -9,7 +9,7 @@ output "db_admin_secret_name" {
 }
 
 output "db_endpoint" {
-  value       = "${google_sql_database_instance.this.private_ip_address}:${local.db_port}"
+  value       = var.enable_psc ? local.db_endpoint_psc : local.db_endpoint_psa
   description = "string ||| The endpoint URL to access the PostgreSQL instance."
 }
 

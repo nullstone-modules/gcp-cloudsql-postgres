@@ -1,3 +1,6 @@
+# 0.3.0 (Jun 23, 2026)
+* Added `var.enable_psc` to support Private Service Connect in addition to Private Service Access.
+
 # 0.2.12 (Feb 20, 2026)
 * Configure resource alerts through external `notification` connection.
 * Renamed `var.resource_alerts` to `var.resource_thresholds` and removed notification info.
