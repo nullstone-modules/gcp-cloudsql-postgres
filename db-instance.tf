@@ -2,23 +2,25 @@ resource "google_sql_database_instance" "this" {
   name                = local.resource_name
   database_version    = "POSTGRES_${replace(var.postgres_version, ".", "_")}"
   region              = data.google_compute_subnetwork.private0.region
-  deletion_protection = false
+  deletion_protection = var.deletion_protection_enabled
 
   settings {
-    edition           = var.edition
-    tier              = var.instance_class
-    activation_policy = "ALWAYS"
-    availability_type = var.high_availability ? "REGIONAL" : "ZONAL"
-    disk_size         = var.allocated_storage
-    disk_autoresize   = "true"
-    disk_type         = "PD_SSD"
-    pricing_plan      = "PER_USE"
-    user_labels       = local.labels
+    edition                     = var.edition
+    tier                        = var.instance_class
+    activation_policy           = "ALWAYS"
+    availability_type           = var.high_availability ? "REGIONAL" : "ZONAL"
+    disk_size                   = var.allocated_storage
+    disk_autoresize             = "true"
+    disk_type                   = "PD_SSD"
+    pricing_plan                = "PER_USE"
+    user_labels                 = local.labels
+    deletion_protection_enabled = var.deletion_protection_enabled
 
     backup_configuration {
       enabled                        = true
       start_time                     = "02:00"
       transaction_log_retention_days = var.backup_retention_count
+      point_in_time_recovery_enabled = var.point_in_time_recovery_enabled
 
       backup_retention_settings {
         retention_unit   = "COUNT"

@@ -1,3 +1,7 @@
+# 0.4.0 (Jun 24, 2026)
+* Added `var.point_in_time_recovery_enabled` to enable point-in-time recovery on the database instance.
+* Added `var.deletion_protection_enabled` to protect the instance from deletion at both the Terraform and GCP API levels.
+
 # 0.3.0 (Jun 23, 2026)
 * Added `var.enable_psc` to support Private Service Connect in addition to Private Service Access.
 

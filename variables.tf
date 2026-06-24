@@ -108,6 +108,26 @@ By default, this is disabled.
 EOF
 }
 
+variable "point_in_time_recovery_enabled" {
+  type        = bool
+  default     = false
+  description = <<EOF
+Enables point-in-time recovery (PITR) on the database instance.
+PITR lets you restore the database to a specific moment, which is useful for recovering from accidental data loss.
+By default, this is disabled. It is recommended to enable this in production environments.
+EOF
+}
+
+variable "deletion_protection_enabled" {
+  type        = bool
+  default     = false
+  description = <<EOF
+Protects the database instance from accidental deletion.
+When enabled, the instance cannot be deleted until this is disabled, at both the Terraform and GCP API levels.
+By default, this is disabled. It is recommended to enable this in production environments.
+EOF
+}
+
 variable "enable_public_access" {
   type        = bool
   default     = false
