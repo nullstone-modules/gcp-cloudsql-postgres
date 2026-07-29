@@ -1,6 +1,6 @@
 module "db_admin" {
   source  = "api.nullstone.io/nullstone/gcp-pg-db-admin/gcp"
-  version = "~> 0.8.0"
+  version = "~> 0.9.0"
 
   name   = local.resource_name
   labels = local.labels

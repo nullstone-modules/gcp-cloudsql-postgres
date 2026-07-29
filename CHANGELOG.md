@@ -1,6 +1,6 @@
-# 0.4.2 (Jul 30, 2026)
-* Fixed the `db-admin` host when `var.enable_psc` is enabled. A PSC instance has no private IP of its own, so the
-  admin connection URL was left with an empty host, breaking database/role/grant creation for connected apps.
+# 0.5.0 (Jul 30, 2026)
+* Upgraded `gcp-pg-db-admin` to 0.9.0, which adds publications, logical replication slots, read-only table privileges, and a `REPLICATION` role attribute. 
+* Fixed the `db-admin` host when `var.enable_psc` is enabled. A PSC instance has no private IP of its own, so the admin connection URL was left with an empty host, breaking database/role/grant creation for connected apps.
   Admin traffic now dials the Private Service Connect endpoint reserved by this module.
 
 # 0.4.1 (Jul 03, 2026)
