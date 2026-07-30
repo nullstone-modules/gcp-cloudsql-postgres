@@ -5,7 +5,7 @@ module "db_admin" {
   name   = local.resource_name
   labels = local.labels
 
-  host                      = google_sql_database_instance.this.private_ip_address
+  host                      = local.db_admin_host
   port                      = local.db_port
   database                  = "postgres"
   username                  = local.admin_username

@@ -1,3 +1,8 @@
+# 0.4.2 (Jul 30, 2026)
+* Fixed the `db-admin` host when `var.enable_psc` is enabled. A PSC instance has no private IP of its own, so the
+  admin connection URL was left with an empty host, breaking database/role/grant creation for connected apps.
+  Admin traffic now dials the Private Service Connect endpoint reserved by this module.
+
 # 0.4.1 (Jul 03, 2026)
 * Switched to using `data.ns_workspace.gcp_labels` instead of `tags`.
 * Upgraded TF providers.

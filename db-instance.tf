@@ -101,6 +101,10 @@ locals {
   // Endpoint strategy: with PSC, connect via the internal DNS name; otherwise via the private IP.
   db_endpoint_psa = "${google_sql_database_instance.this.private_ip_address}:${local.db_port}"
   db_endpoint_psc = "${local.psc_dns_name}:${local.db_port}"
+
+  // The host the db-admin function dials. Under PSC the instance has no private IP of its own,
+  // so admin traffic goes through the consumer endpoint this module reserves.
+  db_admin_host = var.enable_psc ? google_compute_address.psc[0].address : google_sql_database_instance.this.private_ip_address
 }
 
 // Warn (rather than fail) when both public access and PSC are requested. They are mutually exclusive;
