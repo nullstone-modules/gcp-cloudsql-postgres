@@ -1,3 +1,6 @@
+# 0.5.2 (Sep 04, 2026)
+* Added an alert on the db-admin function 5xx error rate through the `notification` connection, configurable with `var.admin_thresholds`.
+
 # 0.5.1 (Aug 10, 2026)
 * Adjusted admin password to be valid when a strict password policy is enabled.
 

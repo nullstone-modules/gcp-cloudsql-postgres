@@ -193,3 +193,21 @@ The thresholds are specified as percentages. (i.e. 80 => 80%)
 However, io_read and io_write are specified in ops per second.
 EOF
 }
+
+variable "admin_thresholds" {
+  type = object({
+    error_rate = number
+  })
+  default = {
+    error_rate = 10
+  }
+
+  description = <<EOF
+Enables alerts on the db-admin function that manages databases, users, and grants for connected apps.
+
+Each alert is configured to trigger when the value exceeds the specified threshold.
+error_rate is the percentage of requests returning 5xx over a 5 minute window. (i.e. 10 => 10%)
+The function only receives traffic during Nullstone plans and applies, so a single failure in a quiet window can exceed this threshold.
+Only used when a "notification" datastore is connected; otherwise no alert policy is created.
+EOF
+}
